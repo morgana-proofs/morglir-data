@@ -1,9 +1,12 @@
 use std::fmt;
+use std::path::Path;
+use std::fs::File;
 use serde::{
     de::{Deserializer, Visitor, MapAccess, Unexpected},
     Serialize, Deserialize
 };
 use serde::de::SeqAccess;
+use serde_json;
 use crate::circuit::Circuit;
 
 
@@ -15,6 +18,20 @@ pub struct Program (
     pub Metadata,
     pub Circuit,
 );
+
+impl Program {
+    pub fn to_writer<W: std::io::Write>(&self, writer: W) -> serde_json::Result<()> {
+        serde_json::to_writer_pretty(
+            writer,
+            &self,
+        )
+    }
+    pub fn from_reader<R: std::io::Read>(reader: R) -> serde_json::Result<Self> {
+        serde_json::from_reader::<_, Program>(
+            reader,
+        )
+    }
+}
 
 impl<'de> Deserialize<'de> for Program {
     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>

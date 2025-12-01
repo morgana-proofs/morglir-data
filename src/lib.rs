@@ -115,11 +115,10 @@ mod tests {
             }
         );
 
-        let data = serde_json::to_writer_pretty(
-            File::options().create(true).write(true).open("samples/division.morgl").unwrap(),
-            &some_program,
+        some_program.to_writer(
+            File::options().create(true).write(true).open("samples/division.morgl").unwrap()
         ).unwrap();
-        let reloaded_program = serde_json::from_reader::<_, Program>(
+        let reloaded_program = Program::from_reader(
             File::open("samples/division.morgl").unwrap(),
         ).unwrap();
         assert_eq!(some_program, reloaded_program);
