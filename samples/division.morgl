@@ -1,0 +1,112 @@
+[
+  {
+    "version": "0.1.0"
+  },
+  {
+    "lambdas": [
+      "$0.invert()"
+    ],
+    "op_data": [
+      {
+        "field_const_from": "1"
+      }
+    ],
+    "components": [
+      {
+        "wires": [
+          {
+            "wire_type": "Field",
+            "is_sig": true
+          },
+          {
+            "wire_type": "Field",
+            "is_sig": true
+          },
+          {
+            "wire_type": "Field",
+            "is_sig": true
+          },
+          {
+            "wire_type": "Field",
+            "is_sig": true
+          },
+          {
+            "wire_type": "Field",
+            "is_sig": true
+          }
+        ],
+        "inputs": [
+          0,
+          1
+        ],
+        "outputs": [
+          2
+        ],
+        "nodes": [
+          {
+            "inputs": [],
+            "outputs": [
+              2
+            ],
+            "node_type": {
+              "Base": {
+                "operation_type": "Const____Field",
+                "data_link": 0
+              }
+            }
+          },
+          {
+            "inputs": [
+              1
+            ],
+            "outputs": [
+              3
+            ],
+            "node_type": {
+              "Lambda": 0
+            }
+          },
+          {
+            "inputs": [
+              0,
+              3
+            ],
+            "outputs": [
+              4
+            ],
+            "node_type": {
+              "Base": {
+                "operation_type": "Mul__Field_Field__Field",
+                "data_link": null
+              }
+            }
+          }
+        ],
+        "constraints": [
+          {
+            "signals": [
+              1,
+              3,
+              2
+            ],
+            "operation": {
+              "operation_type": "Mul__Field_Field__Field",
+              "data_link": null
+            }
+          },
+          {
+            "signals": [
+              0,
+              3,
+              4
+            ],
+            "operation": {
+              "operation_type": "Mul__Field_Field__Field",
+              "data_link": null
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

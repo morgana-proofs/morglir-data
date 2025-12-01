@@ -3,7 +3,7 @@ use crate::constraint::Constraint;
 use crate::node::Node;
 use crate::wire::Wire;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(PartialEq, Eq, Debug, Serialize, Deserialize)]
 pub struct Component {
     pub wires: Vec<Wire>,
     pub inputs: Vec<usize>,
